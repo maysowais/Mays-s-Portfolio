@@ -430,7 +430,7 @@
         }
 
 
-        /* Skills Section - قسم المهارات */
+        /* Skills Section - قسم المهارات (تنسيق محدث) */
         #skills {
             padding: 10rem 9% 5rem;
             background-color: var(--snd-bg-color); /* تغيير لون الخلفية للتميز */
@@ -453,84 +453,94 @@
         .Technical-bars {
             display: flex;
             flex-direction: column;
-            gap: 20px; /* تباعد أقل بين الشرائط */
+            gap: 25px; /* تباعد جيد بين المهارات */
             padding: 0 2rem;
         }
 
         .bar {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column; /* جعل المحتوى داخله مرتباً عمودياً */
             background-color: var(--bg-color);
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* ظل أنعم */
-            padding: 18px 30px; /* زيادة البادينج */
+            border-radius: 1rem; /* زوايا مستديرة أكثر */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
+            padding: 20px 25px 30px; /* زيادة البادينج السفلي لإفساح المجال لشريط التقدم */
             position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             overflow: hidden;
-            border: 1px solid var(--accent-color); /* إضافة حدود خفيفة */
-            transform: translateX(-100%); 
+            border: 2px solid var(--accent-color); 
             opacity: 0;
+            transform: translateY(30px);
         }
         
         .bar.animate {
-            transform: translateX(0);
+            transform: translateY(0);
             opacity: 1;
         }
 
         .bar:hover {
             transform: translateY(-8px); /* رفع أكثر عند التمرير */
-            box-shadow: 0 12px 40px var(--shadow-color); /* ظل أكبر وأكثر وضوحاً */
+            box-shadow: 0 15px 40px var(--shadow-color);
+            border-color: var(--main-color);
         }
 
         .bar i {
-            font-size: 4rem; /* زيادة حجم الأيقونة */
-            margin-right: 2rem;
+            font-size: 4rem; 
+            margin-right: 1.5rem;
             flex-shrink: 0;
             transition: transform 0.3s;
             color: var(--main-color); /* لون موحد للأيقونات قبل التمرير */
         }
         
-        .bar:hover i {
-            transform: scale(1.1);
-        }
-
         .info {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             width: 100%;
             position: relative;
             z-index: 2; /* تأكد من ظهور النص فوق شريط التقدم */
             font-size: 2rem;
             font-weight: 600;
-            color: var(--text-color); /* تأكيد اللون الأسود/الغامق لضمان التباين */
-        }
-
-        .percentage {
-            font-weight: 700; /* جعل النسبة المئوية أثقل/أوضح */
-            color: var(--main-color);
-            margin-left: 1rem;
+            color: var(--text-color);
+            margin-bottom: 10px; /* تباعد قبل شريط التقدم */
         }
         
-        .bar:hover .percentage {
-             color: var(--text-color); /* تغيير لون النسبة عند التمرير لتناسق أفضل */
+        .bar .info span:first-child {
+            display: flex;
+            align-items: center;
+        }
+
+        .bar .info .percentage {
+             color: var(--main-color); 
+             font-weight: 700;
+             margin-right: 0;
+        }
+        
+        /* هذا هو المسار المرئي لشريط التقدم */
+        .bar::before {
+            content: '';
+            position: absolute;
+            bottom: 10px; 
+            left: 25px;
+            right: 25px;
+            height: 10px;
+            background-color: var(--snd-bg-color); /* لون مسار شريط التقدم (الخلفية) */
+            border-radius: 5px;
+            z-index: 0;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .progress {
-            height: 100%;
-            background-color: var(--main-color);
-            border-radius: 12px;
+            /* Now, .progress acts as the fill overlay */
+            height: 10px; 
+            background: linear-gradient(90deg, var(--accent-color), var(--main-color));
+            border-radius: 5px;
             position: absolute;
-            top: 0;
-            left: 0;
+            bottom: 10px; /* ليتطابق مع .bar::before */
+            left: 25px;
             width: 0;
-            opacity: 0.8;
-            transition: width 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* انتقال أبطأ وأكثر سلاسة */
-            z-index: 0;
-        }
-        
-        .bar .info {
-            z-index: 2;
+            opacity: 1;
+            transition: width 1.5s ease-out; /* انتقال أبطأ وأكثر سلاسة */
+            z-index: 1; /* يجب أن يكون فوق المسار */
         }
         
         /* Specific Skill Icon Colors (Optional but helps visual distinction) */
@@ -985,33 +995,30 @@
                 
                 <!-- Front-End Skills -->
                 <div class="bar" data-percentage="90%">
-                    <i class='bx bxl-html5 html'></i>
                     <div class="info">
-                        <span>HTML</span>
+                        <span><i class='bx bxl-html5 html'></i> HTML</span>
                         <span class="percentage">90%</span>
                     </div>
+                    <!-- ملاحظة: .progress يتم وضعه تلقائياً بواسطة CSS فوق المسار -->
                     <div class="progress"></div>
                 </div>
                 <div class="bar" data-percentage="85%">
-                    <i class='bx bxl-css3 css'></i>
                     <div class="info">
-                        <span>CSS</span>
+                        <span><i class='bx bxl-css3 css'></i> CSS</span>
                         <span class="percentage">85%</span>
                     </div>
                     <div class="progress"></div>
                 </div>
                 <div class="bar" data-percentage="80%">
-                    <i class='bx bxl-javascript js'></i>
                     <div class="info">
-                        <span>JavaScript</span>
+                        <span><i class='bx bxl-javascript js'></i> JavaScript</span>
                         <span class="percentage">80%</span>
                     </div>
                     <div class="progress"></div>
                 </div>
                 <div class="bar" data-percentage="70%">
-                    <i class='bx bxl-react react'></i>
                     <div class="info">
-                        <span>React (Basics)</span>
+                        <span><i class='bx bxl-react react'></i> React (Basics)</span>
                         <span class="percentage">70%</span>
                     </div>
                     <div class="progress"></div>
@@ -1019,17 +1026,15 @@
                 
                 <!-- Data & Analytics Skills -->
                 <div class="bar" data-percentage="80%">
-                    <i class="fa-solid fa-chart-line data"></i>
                     <div class="info">
-                        <span>Power BI / Tableau</span>
+                        <span><i class="fa-solid fa-chart-line data"></i> Power BI / Tableau</span>
                         <span class="percentage">80%</span>
                     </div>
                     <div class="progress"></div>
                 </div>
                 <div class="bar" data-percentage="75%">
-                    <i style="color: #217346;" class="fa-solid fa-file-excel excel"></i>
                     <div class="info">
-                        <span>Excel & Data Processing</span>
+                        <span><i style="color: #217346;" class="fa-solid fa-file-excel excel"></i> Excel & Data Processing</span>
                         <span class="percentage">75%</span>
                     </div>
                     <div class="progress"></div>
@@ -1037,17 +1042,15 @@
                 
                 <!-- Programming & Database -->
                 <div class="bar" data-percentage="85%">
-                    <i class='bx bxl-python python'></i>
                     <div class="info">
-                        <span>Python</span>
+                        <span><i class='bx bxl-python python'></i> Python</span>
                         <span class="percentage">85%</span>
                     </div>
                     <div class="progress"></div>
                 </div>
                 <div class="bar" data-percentage="70%">
-                    <i class="fa-solid fa-database sql"></i>
                     <div class="info">
-                        <span>SQL / Database Mgmt</span>
+                        <span><i class="fa-solid fa-database sql"></i> SQL / Database Mgmt</span>
                         <span class="percentage">70%</span>
                     </div>
                     <div class="progress"></div>
@@ -1055,9 +1058,8 @@
 
                 <!-- GIS Skill (NEW) -->
                 <div class="bar" data-percentage="75%">
-                    <i class="fa-solid fa-map gis"></i>
                     <div class="info">
-                        <span>GIS (Geographic Info. Systems)</span>
+                        <span><i class="fa-solid fa-map gis"></i> GIS (Geographic Info. Systems)</span>
                         <span class="percentage">75%</span>
                     </div>
                     <div class="progress"></div>
@@ -1065,9 +1067,8 @@
                 
                 <!-- Framework/Utility -->
                 <div class="bar" data-percentage="70%">
-                    <i class='bx bxl-bootstrap bootstrap'></i>
                     <div class="info">
-                        <span>Bootstrap</span>
+                        <span><i class='bx bxl-bootstrap bootstrap'></i> Bootstrap</span>
                         <span class="percentage">70%</span>
                     </div>
                     <div class="progress"></div>
