@@ -122,14 +122,14 @@
             align-items: center;
             min-height: 100vh;
             padding-top: 10rem; 
-            flex-wrap: wrap-reverse;
-            gap: 4rem;
+            /* تم إزالة flex-wrap-reverse و gap */
             text-align: left;
             opacity: 1; 
         }
 
         .home-content {
-            max-width: 50rem;
+            max-width: 80rem; /* زيادة عرض المحتوى لملء الفراغ */
+            text-align: center; /* توسيط المحتوى النصي بعد إزالة الصورة */
         }
         
         .home-content h3:nth-of-type(1) {
@@ -138,25 +138,8 @@
             font-weight: 700;
         }
 
-        .home img {
-            width: 28vw;
-            min-width: 250px;
-            max-width: 350px;
-            height: auto;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 0.5rem solid var(--main-color);
-            box-shadow: 0 0 30px var(--main-color), 0 0 50px var(--accent-color);
-            animation: floatimg 3s ease-in-out infinite;
-            transition: 0.4s ease;
-        }
-
-        @keyframes floatimg {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-
+        /* تم إزالة أنماط الصورة وحركة floatimg */
+        
         .home-content h3 {
             font-size: 4rem;
             font-weight: 700;
@@ -180,12 +163,15 @@
             font-size: 1.8rem;
             line-height: 1.6;
             margin-bottom: 2rem;
+            max-width: 65rem; /* تحديد عرض الفقرة لتكون مقروءة بشكل أفضل في المنتصف */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Social Media and Buttons - وسائل التواصل والأزرار */
         .social-media {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center; /* توسيط الأيقونات */
             margin-top: 2rem;
         }
 
@@ -661,6 +647,10 @@
             .navbar {
                 gap: 2rem;
             }
+            
+            .home-content {
+                max-width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -701,21 +691,13 @@
                 text-align: center;
             }
             
-            .home-img {
-                order: 1; 
-            }
-            
             .home-content {
-                order: 2;
                 max-width: 90%;
             }
 
-            .home img {
-                width: 60vw;
-            }
-            
-            .home-content h1 {
-                font-size: 5.5rem;
+            .home-content p {
+                max-width: 90%;
+                margin: 0 auto 2rem auto;
             }
             
             .social-media {
@@ -748,11 +730,6 @@
         @media (max-width: 480px) {
             html {
                 font-size: 45%;
-            }
-            
-            .home img {
-                width: 75vw;
-                min-width: 250px;
             }
             
             .home-content h1 {
@@ -801,15 +778,6 @@
             </div>
             
             <a href="#" class="btn">Download CV</a>
-        </div>
-        
-        <div class="home-img">
-            <!-- تم استخدام صورة بديلة مع fallback -->
-            <img 
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbw69z9_ucjP7pDtxp_I-pByIAgD4yjsImZw&s" 
-                alt="Mays Owais Profile Image"
-                onerror="this.onerror=null; this.src='https://placehold.co/350x350/4c1633/ffffff?text=Mays+Owais'"
-            >
         </div>
     </section>
 
