@@ -25,6 +25,7 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* Light Mode Variables (Default) - وضع الإضاءة (افتراضي) */
         :root {
             --bg-color: #fff;
             --snd-bg-color: #f0f0f5; /* رمادي فاتح جداً */
@@ -32,6 +33,16 @@
             --main-color: #4c1633; /* بنفسجي غامق */
             --accent-color: #db91b9; /* لمسة وردية */
             --shadow-color: rgba(76, 22, 51, 0.15); /* ظل بلون رئيسي */
+        }
+        
+        /* Dark Mode Variables - وضع الظلام */
+        .dark-mode {
+            --bg-color: #121212;
+            --snd-bg-color: #1f1f1f; 
+            --text-color: #e0e0e0;
+            --main-color: #db91b9; /* عكس اللون الرئيسي */
+            --accent-color: #6e2a4a; /* لمسة بنفسجية أغمق */
+            --shadow-color: rgba(219, 145, 185, 0.25); 
         }
 
         html {
@@ -42,13 +53,14 @@
         body {
             background: var(--bg-color);
             color: var(--text-color);
+            transition: background-color 0.5s, color 0.5s; /* انتقال سلس بين الأوضاع */
         }
 
         .section {
             min-height: 100vh;
             padding: 10rem 9% 2rem;
-            opacity: 0; /* الحالة الأولية للإظهار بالتمرير */
-            transition: all 1s ease-out; /* انتقال أساسي للأقسام */
+            opacity: 0; 
+            transition: all 1s ease-out; 
         }
 
         /* Scroll Reveal Animation Classes - فئات حركة الإظهار بالتمرير */
@@ -56,6 +68,42 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Scroll Progress Bar - شريط تقدم التمرير (جديد) */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--main-color));
+            width: 0;
+            z-index: 101; /* أعلى من الرأس */
+        }
+
+        /* Dark Mode Toggle Button - زر تبديل الوضع (جديد) */
+        #dark-mode-toggle {
+            position: fixed;
+            bottom: 3rem;
+            right: 3rem;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            background: var(--main-color);
+            color: var(--bg-color);
+            font-size: 2.4rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
+        
+        #dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
 
         /* Header & Navigation - الرأس والتنقل */
         .header {
@@ -73,8 +121,8 @@
         }
         
         .navbar {
-            display: flex; /* ضمان استخدام فليكس للتحكم بالتباعد */
-            gap: 3.5rem; /* تباعد أفضل بين الروابط */
+            display: flex; 
+            gap: 3.5rem; 
         }
 
         .logo {
@@ -94,9 +142,8 @@
         .navbar a {
             font-size: 1.9rem;
             color: var(--bg-color);
-            /* تم إلغاؤه واستبداله بـ gap */
             transition: 0.3s ease;
-            padding: 0.8rem 1.5rem; /* زيادة البادينج لتحسين حجم المنطقة القابلة للنقر */
+            padding: 0.8rem 1.5rem; 
             border-radius: 0.7rem;
             font-weight: 500;
         }
@@ -122,14 +169,13 @@
             align-items: center;
             min-height: 100vh;
             padding-top: 10rem; 
-            /* تم إزالة flex-wrap-reverse و gap */
             text-align: left;
             opacity: 1; 
         }
 
         .home-content {
-            max-width: 80rem; /* زيادة عرض المحتوى لملء الفراغ */
-            text-align: center; /* توسيط المحتوى النصي بعد إزالة الصورة */
+            max-width: 80rem; 
+            text-align: center; 
         }
         
         .home-content h3:nth-of-type(1) {
@@ -137,8 +183,6 @@
             font-size: 4rem;
             font-weight: 700;
         }
-
-        /* تم إزالة أنماط الصورة وحركة floatimg */
         
         .home-content h3 {
             font-size: 4rem;
@@ -163,7 +207,7 @@
             font-size: 1.8rem;
             line-height: 1.6;
             margin-bottom: 2rem;
-            max-width: 65rem; /* تحديد عرض الفقرة لتكون مقروءة بشكل أفضل في المنتصف */
+            max-width: 65rem; 
             margin-left: auto;
             margin-right: auto;
         }
@@ -171,7 +215,7 @@
         /* Social Media and Buttons - وسائل التواصل والأزرار */
         .social-media {
             display: flex;
-            justify-content: center; /* توسيط الأيقونات */
+            justify-content: center; 
             margin-top: 2rem;
         }
 
@@ -209,11 +253,12 @@
             font-weight: 600;
             transition: 0.4s ease;
             margin-top: 3rem;
+            cursor: pointer;
         }
 
         .btn:hover {
             box-shadow: 0 0 2.5rem var(--main-color);
-            background: linear-gradient(135deg, var(--main-color), #6e2a4a);
+            background: linear-gradient(135deg, var(--main-color), var(--accent-color));
             transform: scale(1.05);
         }
 
@@ -291,7 +336,7 @@
             transform: translateY(-12px);
             border-color: var(--main-color);
             background-color: var(--accent-color);
-            box-shadow: 0 15px 30px rgba(76, 22, 51, 0.3);
+            box-shadow: 0 15px 30px var(--shadow-color);
             color: var(--main-color);
         }
 
@@ -378,7 +423,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(76, 22, 51, 0.95); /* غطاء بلون رئيسي معتم */
+            background: rgba(76, 22, 51, 0.95); 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -388,6 +433,16 @@
             transform: translateY(100%);
             transition: 0.5s ease;
         }
+        
+        .dark-mode .portfolio-layer {
+            background: rgba(219, 145, 185, 0.95);
+        }
+        
+        .dark-mode .portfolio-layer h4,
+        .dark-mode .portfolio-layer p {
+             color: var(--bg-color);
+        }
+
 
         .portfolio-box:hover .portfolio-layer {
             transform: translateY(0);
@@ -430,10 +485,10 @@
         }
 
 
-        /* Skills Section - قسم المهارات (تنسيق محدث) */
+        /* Skills Section - قسم المهارات */
         #skills {
             padding: 10rem 9% 5rem;
-            background-color: var(--snd-bg-color); /* تغيير لون الخلفية للتميز */
+            background-color: var(--snd-bg-color); 
             min-height: auto;
             transform: translateY(50px);
         }
@@ -453,17 +508,17 @@
         .Technical-bars {
             display: flex;
             flex-direction: column;
-            gap: 25px; /* تباعد جيد بين المهارات */
+            gap: 25px; 
             padding: 0 2rem;
         }
 
         .bar {
             display: flex;
-            flex-direction: column; /* جعل المحتوى داخله مرتباً عمودياً */
+            flex-direction: column; 
             background-color: var(--bg-color);
-            border-radius: 1rem; /* زوايا مستديرة أكثر */
+            border-radius: 1rem; 
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
-            padding: 20px 25px 30px; /* زيادة البادينج السفلي لإفساح المجال لشريط التقدم */
+            padding: 20px 25px 30px; 
             position: relative;
             transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             overflow: hidden;
@@ -478,7 +533,7 @@
         }
 
         .bar:hover {
-            transform: translateY(-8px); /* رفع أكثر عند التمرير */
+            transform: translateY(-8px); 
             box-shadow: 0 15px 40px var(--shadow-color);
             border-color: var(--main-color);
         }
@@ -488,7 +543,7 @@
             margin-right: 1.5rem;
             flex-shrink: 0;
             transition: transform 0.3s;
-            color: var(--main-color); /* لون موحد للأيقونات قبل التمرير */
+            color: var(--main-color); 
         }
         
         .info {
@@ -497,11 +552,11 @@
             align-items: center;
             width: 100%;
             position: relative;
-            z-index: 2; /* تأكد من ظهور النص فوق شريط التقدم */
+            z-index: 2; 
             font-size: 2rem;
             font-weight: 600;
             color: var(--text-color);
-            margin-bottom: 10px; /* تباعد قبل شريط التقدم */
+            margin-bottom: 10px; 
         }
         
         .bar .info span:first-child {
@@ -515,7 +570,6 @@
              margin-right: 0;
         }
         
-        /* هذا هو المسار المرئي لشريط التقدم */
         .bar::before {
             content: '';
             position: absolute;
@@ -523,27 +577,26 @@
             left: 25px;
             right: 25px;
             height: 10px;
-            background-color: var(--snd-bg-color); /* لون مسار شريط التقدم (الخلفية) */
+            background-color: var(--snd-bg-color); 
             border-radius: 5px;
             z-index: 0;
             box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .progress {
-            /* Now, .progress acts as the fill overlay */
             height: 10px; 
             background: linear-gradient(90deg, var(--accent-color), var(--main-color));
             border-radius: 5px;
             position: absolute;
-            bottom: 10px; /* ليتطابق مع .bar::before */
+            bottom: 10px; 
             left: 25px;
             width: 0;
             opacity: 1;
-            transition: width 1.5s ease-out; /* انتقال أبطأ وأكثر سلاسة */
-            z-index: 1; /* يجب أن يكون فوق المسار */
+            transition: width 1.5s ease-out; 
+            z-index: 1; 
         }
         
-        /* Specific Skill Icon Colors (Optional but helps visual distinction) */
+        /* Specific Skill Icon Colors */
         .bar i.html { color: #E34F26; }
         .bar i.css { color: #1572B6; }
         .bar i.js { color: #F7DF1E; }
@@ -572,6 +625,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px var(--shadow-color);
             text-align: center;
+            position: relative; /* لإحتواء رسالة النجاح */
         }
 
         .input-box {
@@ -599,13 +653,48 @@
         textarea:focus,
         textarea:hover {
             border-color: var(--main-color);
-            box-shadow: 0 0 12px rgba(76, 22, 51, 0.6);
+            box-shadow: 0 0 12px var(--shadow-color);
             outline: none;
         }
 
         textarea {
             height: 180px;
             resize: none;
+        }
+        
+        /* Contact Success Message - رسالة النجاح (جديد) */
+        #contact-message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(76, 22, 51, 0.98);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 600;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            text-align: center;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        
+        #contact-message.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        #contact-message i {
+            font-size: 6rem;
+            color: #4CAF50; /* لون أخضر للنجاح */
+            margin-bottom: 15px;
         }
         
         /* Footer - التذييل */
@@ -653,7 +742,6 @@
             .section {
                 padding: 10rem 3% 2rem;
             }
-            /* Adjust spacing for smaller screens */
             .navbar {
                 gap: 2rem;
             }
@@ -681,7 +769,7 @@
                 flex-direction: column;
                 align-items: center;
                 transition: all 0.5s ease;
-                gap: 0; /* إلغاء التباعد على الموبايل واستخدام margin-bottom للروابط */
+                gap: 0; 
             }
 
             .navbar.active {
@@ -691,7 +779,7 @@
             .navbar a {
                 display: block;
                 font-size: 2.2rem;
-                margin: 1.5rem 0; /* تباعد عمودي أفضل للروابط على الموبايل */
+                margin: 1.5rem 0; 
                 padding: 1rem 2rem;
             }
             
@@ -735,6 +823,11 @@
             .contact {
                 padding: 10rem 3% 5rem;
             }
+            
+            #dark-mode-toggle {
+                bottom: 2rem;
+                right: 2rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -752,7 +845,16 @@
         }
     </style>
 </head>
-<body>
+<body id="body">
+    
+    <!-- Scroll Progress Bar - شريط تقدم التمرير -->
+    <div id="progress-bar"></div>
+
+    <!-- Dark Mode Toggle - زر تبديل الوضع الليلي -->
+    <div id="dark-mode-toggle" role="button" aria-label="Toggle Dark Mode">
+        <i class='bx bxs-moon'></i>
+    </div>
+
     <!-- Header - الرأس -->
     <header class="header">
         <a href="#home" class="logo">Mays Owais</a>
@@ -987,7 +1089,7 @@
         </div>
     </section>
 
-    <!-- Skills Section - قسم المهارات (المعدل بالكامل) -->
+    <!-- Skills Section - قسم المهارات -->
     <section id="skills" class="section">
         <div class="container1">
             <h1 class="heading1">Technical <span>Skills</span></h1>
@@ -999,7 +1101,6 @@
                         <span><i class='bx bxl-html5 html'></i> HTML</span>
                         <span class="percentage">90%</span>
                     </div>
-                    <!-- ملاحظة: .progress يتم وضعه تلقائياً بواسطة CSS فوق المسار -->
                     <div class="progress"></div>
                 </div>
                 <div class="bar" data-percentage="85%">
@@ -1081,7 +1182,7 @@
     <section class="contact section" id="contact">
         <div class="contact-form-container">
             <h2 class="heading"><span class="contact-black">Contact</span> <span>Me</span></h2>
-            <form action="#">
+            <form id="contact-form">
                 <div class="input-box">
                     <input type="text" placeholder="Full Name" required>
                     <input type="email" name="Email" placeholder="Email Address" required>
@@ -1091,6 +1192,12 @@
                 <textarea name="message" placeholder="Your Message" required></textarea>
                 <input type="submit" value="Send Message" class="btn">
             </form>
+            
+            <!-- Contact Success Message (NEW) -->
+            <div id="contact-message">
+                <i class='bx bxs-check-circle'></i>
+                <p>Thank you! Your message has been sent successfully. I will get back to you shortly.</p>
+            </div>
         </div>
     </section>
 
@@ -1112,14 +1219,61 @@
     <!-- JS Scripts - السكربتات البرمجية -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
-        // Toggle menu icon/navbar on mobile - تبديل أيقونة القائمة/شريط التنقل على الهاتف
-        let menuIcon = document.querySelector('#menu-icon');
-        let navbar = document.querySelector('.navbar');
+        // DOM Elements
+        const body = document.getElementById('body');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        const progressBar = document.getElementById('progress-bar');
+        const contactForm = document.getElementById('contact-form');
+        const contactMessage = document.getElementById('contact-message');
         
+        // 1. Dark Mode Functionality - وظيفة الوضع الليلي
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+        // Apply mode on load
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            darkModeToggle.querySelector('i').className = 'bx bxs-sun';
+        }
+
+        // Toggle handler
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isNowDark = body.classList.contains('dark-mode');
+            
+            // Update icon and save state
+            if (isNowDark) {
+                darkModeToggle.querySelector('i').className = 'bx bxs-sun';
+            } else {
+                darkModeToggle.querySelector('i').className = 'bx bxs-moon';
+            }
+            localStorage.setItem('darkMode', isNowDark);
+        });
+        
+        // Toggle menu icon/navbar on mobile - تبديل أيقونة القائمة/شريط التنقل على الهاتف
         menuIcon.onclick = () => {
             menuIcon.classList.toggle('bx-x');
             navbar.classList.toggle('active');
         };
+
+        // 2. Scroll Progress Bar Update - تحديث شريط التقدم بالتمرير
+        window.addEventListener('scroll', () => {
+            // حساب نسبة التمرير
+            const totalHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPosition = window.scrollY;
+            const progress = (scrollPosition / totalHeight) * 100;
+
+            if (progressBar) {
+                progressBar.style.width = progress + '%';
+            }
+            
+            // Hide menu on scroll if active - إخفاء القائمة عند التمرير إذا كانت نشطة
+            if (navbar.classList.contains('active')) {
+                menuIcon.classList.remove('bx-x');
+                navbar.classList.remove('active');
+            }
+        });
 
         // Scrollspy for active link - تتبع التمرير للرابط النشط
         let sections = document.querySelectorAll('section');
@@ -1143,12 +1297,11 @@
                     }
                 };
             });
-            
-            // Hide menu on scroll if active - إخفاء القائمة عند التمرير إذا كانت نشطة
-            if (navbar.classList.contains('active')) {
-                menuIcon.classList.remove('bx-x');
-                navbar.classList.remove('active');
-            }
+            // Re-call scroll progress update to ensure smooth header/progress bar interaction
+            const totalHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPosition = window.scrollY;
+            const progress = (scrollPosition / totalHeight) * 100;
+            if (progressBar) { progressBar.style.width = progress + '%'; }
         };
 
         // Typed.js for dynamic text in Home section - مكتبة Typed.js للنص الديناميكي
@@ -1160,7 +1313,22 @@
             loop: true
         });
 
-        // 1. Skill Bar Animation on Visibility (Specific Observer for Skills) - حركة شريط المهارات عند الظهور
+        // 3. Contact Form Submission Handler (Mock Success) - معالجة إرسال نموذج التواصل (نجاح وهمي)
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // منع الإرسال الافتراضي
+
+            // عرض رسالة النجاح
+            contactMessage.classList.add('visible');
+            
+            // إخفاء الرسالة وتفريغ الحقول بعد 3 ثوانٍ
+            setTimeout(() => {
+                contactMessage.classList.remove('visible');
+                contactForm.reset();
+            }, 3000); 
+        });
+
+
+        // Skill Bar Animation on Visibility (Specific Observer for Skills) - حركة شريط المهارات عند الظهور
         const bars = document.querySelectorAll('.bar');
         const skillsSection = document.getElementById('skills');
 
@@ -1179,12 +1347,11 @@
             });
         }, { threshold: 0.2 }); 
 
-        // بدء مراقبة قسم المهارات
         if (skillsSection) {
             skillObserver.observe(skillsSection);
         }
         
-        // 2. General Scroll Reveal Animations - حركات الإظهار العامة بالتمرير
+        // General Scroll Reveal Animations - حركات الإظهار العامة بالتمرير
         const elementsToAnimate = [
             ...document.querySelectorAll('.section:not(#home)'), 
             ...document.querySelectorAll('.services-box'),
@@ -1195,7 +1362,6 @@
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // تطبيق فئة 'animate' للانتقالات CSS
                     entry.target.classList.add('animate');
                     observer.unobserve(entry.target);
                 }
