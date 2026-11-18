@@ -108,22 +108,21 @@
   .socials a{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--muted);transition:all .25s}
   .socials a:hover{color:#fff;background:var(--grad);border-color:transparent;transform:translateY(-4px) rotate(-6deg);box-shadow:0 10px 24px -8px rgba(236,72,153,.7)}
 
-  .hero-visual{position:relative;display:grid;place-items:center}
-  .orb-wrap{position:relative;width:min(380px,80vw);aspect-ratio:1}
-  .ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,var(--g1),var(--g2),var(--g3),var(--cyan),var(--g1));animation:spin 10s linear infinite;filter:blur(1px)}
-  .ring::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--bg)}
-  .ring-glow{position:absolute;inset:-10px;border-radius:50%;background:conic-gradient(from 0deg,var(--g1),var(--g2),var(--g3),var(--cyan),var(--g1));filter:blur(40px);opacity:.45;animation:spin 10s linear infinite}
-  @keyframes spin{to{transform:rotate(360deg)}}
-  .orb{position:absolute;inset:26px;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.18),transparent 45%),linear-gradient(145deg,#2a1452,#4a1240 60%,#3a1d0a);display:grid;place-items:center;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
-  .orb span{font-family:"Space Grotesk";font-size:clamp(70px,11vw,120px);font-weight:700;background:linear-gradient(160deg,#fff,#f9c4e0 60%,#fcd38a);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.04em}
-  .float-card{position:absolute;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:color-mix(in srgb,var(--bg) 70%,transparent);border:1px solid var(--line-2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 14px 40px -12px rgba(0,0,0,.5);animation:bob 5s ease-in-out infinite;white-space:nowrap}
-  .float-card b{font-family:"Space Grotesk";font-size:22px;display:block;line-height:1}
-  .float-card small{font-size:12px;color:var(--muted)}
-  .fc-ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff}
-  .fc1{top:4%;left:-14%}
-  .fc2{bottom:10%;right:-12%;animation-delay:-2.5s}
-  .fc3{bottom:-2%;left:-4%;animation-delay:-1.2s}
-  @keyframes bob{50%{transform:translateY(-12px)}}
+  .hero-visual{position:relative}
+  .hero-visual::before{content:"";position:absolute;inset:8% 4%;background:var(--grad);filter:blur(70px);opacity:.35;border-radius:40px;z-index:-1}
+  .code-win{border-radius:20px;background:#120d22;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 70px -25px rgba(60,20,120,.55);overflow:hidden;transform:perspective(1200px) rotateY(-6deg) rotateX(3deg);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .code-win:hover{transform:none}
+  .code-bar{display:flex;align-items:center;gap:7px;padding:13px 16px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.07)}
+  .code-bar i{width:11px;height:11px;border-radius:50%}
+  .code-bar i:nth-child(1){background:#f43f5e}.code-bar i:nth-child(2){background:#f59e0b}.code-bar i:nth-child(3){background:#22c55e}
+  .code-bar span{margin-left:10px;font-size:12.5px;color:#8f89a8;font-family:ui-monospace,Consolas,monospace}
+  .code{margin:0;padding:20px 22px 22px;font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:14px;line-height:1.75;color:#e8e4f5;overflow-x:auto;white-space:pre}
+  .code .ln{display:inline-block;width:22px;color:#4f4868;user-select:none}
+  .code .k{color:#c084fc}.code .c{color:#fbbf24}.code .s{color:#f9a8d4}.code .cm{color:#6b6585;font-style:italic}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+  .hero-stats div{padding:14px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .hero-stats b{display:block;font-family:"Space Grotesk";font-size:26px;line-height:1.1}
+  .hero-stats span{font-size:12.5px;color:var(--muted)}
 
   /* Marquee */
   .marquee{border-block:1px solid var(--line);background:var(--surface);overflow:hidden;padding:18px 0;position:relative}
@@ -278,7 +277,6 @@
     .hero-grid,.about-grid,.contact-card{grid-template-columns:1fr}
     .hero{min-height:auto;padding:130px 0 60px}
     .hero-visual{margin-top:20px}
-    .fc1{left:-4%}.fc2{right:-4%}
   }
   @media (max-width:880px){
     .menu-btn{display:grid}
@@ -298,10 +296,11 @@
     .timeline::before{left:4px}
     .t-item .node{left:-29px}
     .contact-card{padding:40px 22px;border-radius:24px}
-    .float-card{padding:9px 12px}
-    .float-card b{font-size:18px}
-    .orb-wrap{width:min(290px,72vw)}
-    .fc1{left:-8%;top:-2%}.fc2{right:-8%;bottom:34%}.fc3{left:-4%;bottom:-6%}
+    .code{font-size:12.5px;padding:16px}
+    .code-win{transform:none}
+    .hero-stats{gap:8px}
+    .hero-stats div{padding:12px}
+    .hero-stats b{font-size:20px}
     .filters{border-radius:20px}
     .mock-row{grid-template-columns:1.3fr 1fr .9fr;padding:8px 10px}
   }
@@ -387,14 +386,23 @@
         <a href="mailto:mays67663@gmail.com" aria-label="Email"><svg class="icon"><use href="#i-mail"/></svg></a>
       </div>
     </div>
-    <div class="hero-visual reveal" aria-hidden="true">
-      <div class="orb-wrap">
-        <div class="ring-glow"></div>
-        <div class="ring"></div>
-        <div class="orb"><span>MO</span></div>
-        <div class="float-card fc1"><div class="fc-ic ic-p"><svg class="icon"><use href="#i-heart"/></svg></div><div><b>85%</b><small>model accuracy</small></div></div>
-        <div class="float-card fc2"><div class="fc-ic ic-v"><svg class="icon"><use href="#i-db"/></svg></div><div><b>5,000+</b><small>records processed</small></div></div>
-        <div class="float-card fc3"><div class="fc-ic ic-a"><svg class="icon"><use href="#i-mic"/></svg></div><div><b>ICSR 2025</b><small>conference presenter</small></div></div>
+    <div class="hero-visual reveal">
+      <div class="code-win" aria-label="Profile summary written as Python code">
+        <div class="code-bar"><i></i><i></i><i></i><span>mays_owais.py</span></div>
+<pre class="code"><span class="ln">1</span><span class="k">class</span> <span class="c">MaysOwais</span>:
+<span class="ln">2</span>    role = [<span class="s">"Python Developer"</span>,
+<span class="ln">3</span>            <span class="s">"Data Analyst"</span>,
+<span class="ln">4</span>            <span class="s">"AI &amp; Programming Trainer"</span>]
+<span class="ln">5</span>    degree = <span class="s">"B.Sc. Computer Science"</span>
+<span class="ln">6</span>    stack = [<span class="s">"Python"</span>, <span class="s">"SQL"</span>, <span class="s">"Power BI"</span>,
+<span class="ln">7</span>             <span class="s">"React"</span>, <span class="s">"Node.js"</span>, <span class="s">"n8n"</span>]
+<span class="ln">8</span>    based_in = <span class="s">"Jordan"</span>
+<span class="ln">9</span>    open_to_work = <span class="k">True</span>  <span class="cm"># let's talk</span></pre>
+      </div>
+      <div class="hero-stats">
+        <div><b class="grad-text">85%</b><span>model accuracy</span></div>
+        <div><b class="grad-text">5,000+</b><span>records processed</span></div>
+        <div><b class="grad-text">3</b><span>training roles</span></div>
       </div>
     </div>
   </div>
