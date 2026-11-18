@@ -11,7 +11,12 @@
 <meta property="og:description" content="Full-stack, data and AI automation projects, plus hands-on training in Python, web development and AI.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maysowais.github.io/Mays-s-Portfolio/">
-<meta name="theme-color" content="#0b0914">
+<meta property="og:image" content="https://maysowais.github.io/Mays-s-Portfolio/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://maysowais.github.io/Mays-s-Portfolio/images/og.png">
+<meta name="theme-color" content="#0d0a1f">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3EMO%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,8 +122,8 @@
   .sec-head p{color:var(--muted);font-size:16.5px}
 
   .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);transition:transform .25s,border-color .25s,box-shadow .25s}
-  .card{position:relative;overflow:hidden}
-  .card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--grad);opacity:0;transition:opacity .25s}
+  .card{position:relative}
+  .card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--grad);opacity:0;transition:opacity .25s;border-radius:var(--radius) var(--radius) 0 0}
   .card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:var(--shadow)}
   .card:hover::before{opacity:1}
   .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;flex-shrink:0}
@@ -141,7 +146,10 @@
 
   /* Experience / training list */
   .list{display:grid;gap:16px}
-  .item{background:linear-gradient(180deg,var(--g1),var(--g2)) left/3px 100% no-repeat,var(--surface);padding:24px 26px;display:grid;grid-template-columns:auto 1fr auto;gap:4px 18px;align-items:start}
+  .list{position:relative;padding-left:34px}
+  .list::before{content:"";position:absolute;left:10px;top:14px;bottom:14px;width:2px;border-radius:2px;background:linear-gradient(180deg,var(--g1),var(--g2),var(--g3))}
+  .list>.item::after{content:"";position:absolute;left:-30px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--g2);box-shadow:0 0 0 4px color-mix(in srgb,var(--g2) 22%,transparent)}
+  .item{padding:24px 26px;display:grid;grid-template-columns:auto 1fr auto;gap:4px 18px;align-items:start}
   .item .ic{grid-row:span 3}
   .item h3{font-size:18.5px}
   .org{font-weight:600;font-size:15px;color:#9333ea}
@@ -159,7 +167,22 @@
   .filter:hover{color:var(--text);border-color:var(--line-2)}
   .filter.active{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 8px 20px -10px rgba(236,72,153,.8)}
   .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .proj{padding:24px;display:flex;flex-direction:column}
+  .proj{padding:0;display:flex;flex-direction:column;overflow:hidden}
+  .proj-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex-grow:1}
+  .thumb{height:170px;display:grid;place-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .thumb svg.big{width:64px;height:64px;color:#fff;opacity:.95;filter:drop-shadow(0 8px 20px rgba(0,0,0,.25));position:relative}
+  .thumb::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.18) 1px,transparent 1px);background-size:16px 16px;opacity:.6}
+  .thumb.img{background:#fff}
+  .thumb.img::after{display:none}
+  .thumb img{width:100%;height:100%;object-fit:contain;padding:10px;transition:transform .4s}
+  .proj:hover .thumb img,.proj:hover .thumb svg.big{transform:scale(1.05)}
+  .thumb svg.big{transition:transform .4s}
+  .th-v{background:linear-gradient(135deg,#7c3aed,#a855f7 50%,#6366f1)}
+  .th-p{background:linear-gradient(135deg,#db2777,#ec4899 50%,#f43f5e)}
+  .th-a{background:linear-gradient(135deg,#ea580c,#f97316 50%,#f59e0b)}
+  .th-c{background:linear-gradient(135deg,#0891b2,#22d3ee 50%,#3b82f6)}
+  .th-m{background:linear-gradient(135deg,#a855f7,#ec4899 55%,#f97316)}
+  .proj.featured .thumb{height:220px}
   .proj.hide{display:none}
   .proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
   .cat{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
@@ -254,6 +277,9 @@
     .projects,.achv,.certs,.focus,.row,.skills{grid-template-columns:1fr}
     .proj.featured{grid-column:auto}
     .item{grid-template-columns:auto 1fr;padding:20px}
+    .list{padding-left:26px}
+    .list::before{left:6px}
+    .list>.item::after{left:-26px;width:12px;height:12px}
     .item .ic{grid-row:span 1}
     .date{grid-column:1/-1;grid-row:auto;justify-self:start;margin-top:8px}
     .item p,.item ul,.note{grid-column:1/-1}
@@ -466,49 +492,70 @@
     </div>
     <div class="projects" id="projectGrid">
       <article class="proj card featured reveal" data-cat="web">
-        <div class="proj-top"><div class="ic ic-v"><svg class="icon"><use href="#i-db"/></svg></div><span class="cat">Full-Stack · Featured</span></div>
+        <div class="thumb th-v"><svg class="big"><use href="#i-db"/></svg></div>
+        <div class="proj-body">
+        <div class="proj-top" style="margin-bottom:10px"><span class="cat">Full-Stack · Featured</span></div>
         <h3>Student Management System</h3>
         <p>A full-stack web application for managing student records, with a React front end, a Node.js back end and a PostgreSQL database. Server-side logic adds, views, updates and deletes student records through a browser-based React interface.</p>
         <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">CRUD</span></div>
+      </div>
       </article>
       <article class="proj card reveal" data-cat="ai">
-        <div class="proj-top"><div class="ic ic-a"><svg class="icon"><use href="#i-bot"/></svg></div><span class="cat">AI Automation</span></div>
+        <div class="thumb th-a"><svg class="big"><use href="#i-bot"/></svg></div>
+        <div class="proj-body">
+        <div class="proj-top" style="margin-bottom:10px"><span class="cat">AI Automation</span></div>
         <h3>AI-Powered Telegram Automation</h3>
         <p>A Telegram bot that collects user inputs, uses Google Gemini and triggers an automated email workflow, with session-state management and dynamic calculations.</p>
         <div class="tags"><span class="tag">n8n</span><span class="tag">Gemini API</span><span class="tag">Telegram</span></div>
+      </div>
       </article>
       <article class="proj card reveal" data-cat="data">
-        <div class="proj-top"><div class="ic ic-p"><svg class="icon"><use href="#i-chart"/></svg></div><span class="cat">Data &amp; BI</span></div>
+        <div class="thumb th-p"><svg class="big"><use href="#i-chart"/></svg></div>
+        <div class="proj-body">
+        <div class="proj-top" style="margin-bottom:10px"><span class="cat">Data &amp; BI</span></div>
         <h3>Amazon Sales &amp; Sentiment Analysis</h3>
         <span class="metric">15% growth opportunity</span>
         <p>An ETL pipeline processing 5,000+ records and DAX measures linking customer sentiment to revenue.</p>
         <div class="tags"><span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span></div>
+      </div>
       </article>
       <article class="proj card reveal" data-cat="ai">
-        <div class="proj-top"><div class="ic ic-g"><svg class="icon"><use href="#i-heart"/></svg></div><span class="cat">Machine Learning</span></div>
+        <div class="thumb img"><img src="images/heart.jpg" alt="Box plot of patient age by heart disease condition" loading="lazy" width="900" height="600"></div>
+        <div class="proj-body">
+        <div class="proj-top" style="margin-bottom:10px"><span class="cat">Machine Learning</span></div>
         <h3>Heart Disease Prediction</h3>
         <span class="metric">85% accuracy</span>
         <p>A classification model built with data preprocessing, feature selection and correlation analysis.</p>
         <div class="tags"><span class="tag">R</span><span class="tag">Caret</span><span class="tag">Tidyverse</span></div>
+      </div>
       </article>
       <article class="proj card reveal" data-cat="data">
-        <div class="proj-top"><div class="ic ic-c"><svg class="icon"><use href="#i-chart"/></svg></div><span class="cat">Data &amp; BI</span></div>
+        <div class="thumb th-c"><svg class="big"><use href="#i-chart"/></svg></div>
+        <div class="proj-body">
+        <div class="proj-top" style="margin-bottom:10px"><span class="cat">Data &amp; BI</span></div>
         <h3>Real Madrid &amp; Supermarket Dashboards</h3>
         <p>Interactive Power BI dashboards with DAX time intelligence tracking player KPIs across seasons, and a retail model tracking profit margins by branch.</p>
         <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Modeling</span></div>
+      </div>
       </article>
       <article class="proj card reveal" data-cat="data">
-        <div class="proj-top"><div class="ic ic-v"><svg class="icon"><use href="#i-search"/></svg></div><span class="cat">Data Analysis</span></div>
-        <h3>Exploratory Data Analysis</h3>
+        <div class="thumb img"><img src="images/ufo-year.jpg" alt="Bar chart of UFO sightings per year" loading="lazy" width="900" height="450"></div>
+        <div class="proj-body">
+        <div class="proj-top" style="margin-bottom:10px"><span class="cat">Data Analysis</span></div>
+        <h3>UFO Sightings: Exploratory Data Analysis</h3>
         <p>Multivariate data wrangling and visualization to uncover hidden patterns and correlations in raw datasets.</p>
         <div class="tags"><span class="tag">R</span><span class="tag">ggplot2</span><span class="tag">EDA</span></div>
         <a class="proj-link" href="https://github.com/maysowais/ufo-eda-r-project" target="_blank" rel="noopener">View on GitHub <svg class="icon" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
+      </div>
       </article>
       <article class="proj card reveal" data-cat="web">
-        <div class="proj-top"><div class="ic ic-p"><svg class="icon"><use href="#i-web"/></svg></div><span class="cat">Web</span></div>
+        <div class="thumb th-m"><svg class="big"><use href="#i-web"/></svg></div>
+        <div class="proj-body">
+        <div class="proj-top" style="margin-bottom:10px"><span class="cat">Web</span></div>
         <h3>Study Planner &amp; Restaurant Website</h3>
         <p>A study planner to add, edit and track tasks with export to PDF or Excel, and a responsive restaurant site with an interactive menu and reviews.</p>
         <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+      </div>
       </article>
     </div>
   </div>
@@ -709,6 +756,26 @@
       })
       .finally(function(){ sendBtn.disabled = false; });
   });
+
+  // Count-up numbers in the hero stats
+  var nums = document.querySelectorAll('.hero-stats b');
+  function countUp(el){
+    var txt = el.textContent, target = parseInt(txt.replace(/[^0-9]/g,''),10), suffix = txt.replace(/[0-9,]/g,'');
+    if (!target || reduce) return;
+    var start = null, dur = 1400;
+    function step(ts){
+      if (!start) start = ts;
+      var k = Math.min((ts - start) / dur, 1), v = Math.round(target * (1 - Math.pow(1 - k, 3)));
+      el.textContent = v.toLocaleString('en-US') + suffix;
+      if (k < 1) requestAnimationFrame(step);
+    }
+    el.textContent = '0' + suffix;
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    var nio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ countUp(e.target); nio.unobserve(e.target); } }); }, {threshold:0.6});
+    nums.forEach(function(n){ nio.observe(n); });
+  }
 
   // Reveal on scroll
   var items = document.querySelectorAll('.reveal');
