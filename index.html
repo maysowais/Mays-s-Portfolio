@@ -63,7 +63,12 @@
   .nav-links{display:flex;gap:2px;list-style:none}
   .nav-links a{font-size:14.5px;font-weight:500;color:var(--muted);padding:8px 13px;border-radius:999px;transition:color .2s,background .2s}
   .nav-links a:hover{color:var(--text)}
-  .nav-links a.active{color:var(--text);background:var(--surface-2)}
+  .nav-links a.active{color:var(--text);background:var(--surface-2);box-shadow:inset 0 -2px 0 var(--g2)}
+  .nav-cv{display:inline-flex;align-items:center;gap:7px;font:600 14px Inter,sans-serif;padding:9px 16px;border-radius:999px;background:var(--grad);color:#fff;box-shadow:0 8px 20px -10px rgba(236,72,153,.8);transition:transform .2s}
+  .nav-cv:hover{transform:translateY(-1px)}
+  .nav-cv .icon{width:16px;height:16px}
+  .skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--text);color:var(--bg);padding:10px 14px;border-radius:8px;font-weight:600}
+  .skip:focus{top:12px}
   .nav-actions{display:flex;align-items:center;gap:8px}
   .icon-btn{width:40px;height:40px;display:grid;place-items:center;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer;transition:border-color .2s}
   .icon-btn:hover{border-color:var(--g1)}
@@ -85,7 +90,9 @@
   .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center}
   .badge{display:inline-flex;align-items:center;gap:10px;font-size:13.5px;font-weight:500;color:var(--muted);background:var(--surface);border:1px solid var(--line);padding:6px 14px 6px 10px;border-radius:999px;margin-bottom:24px}
   .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
-  .hero h1{font-size:clamp(44px,6.6vw,74px);font-weight:700;margin-bottom:14px;letter-spacing:-.035em}
+  .hero h1{font-size:clamp(44px,6.6vw,76px);font-weight:700;margin-bottom:16px;letter-spacing:-.035em;line-height:1.05}
+  .hero h1 .hi{display:block;font-size:.4em;font-weight:600;color:var(--muted);letter-spacing:-.01em;margin-bottom:10px}
+  .hero h1 .name{white-space:nowrap}
   .role{font-family:"Space Grotesk";font-size:clamp(19px,2.3vw,24px);font-weight:600;color:var(--muted);margin-bottom:20px;min-height:1.4em}
   .role b{color:var(--text);font-weight:600}
   .role .cursor{display:inline-block;width:2px;height:1em;background:var(--g2);vertical-align:-3px;margin-left:3px;animation:blink 1s steps(1) infinite}
@@ -123,9 +130,7 @@
 
   .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);transition:transform .25s,border-color .25s,box-shadow .25s}
   .card{position:relative}
-  .card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--grad);opacity:0;transition:opacity .25s;border-radius:var(--radius) var(--radius) 0 0}
-  .card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:var(--shadow)}
-  .card:hover::before{opacity:1}
+  .card:hover{border-color:var(--line-2)}
   .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;flex-shrink:0}
   .ic-v{background:linear-gradient(135deg,#8b5cf6,#6366f1)}
   .ic-p{background:linear-gradient(135deg,#ec4899,#f43f5e)}
@@ -148,17 +153,16 @@
   .list{display:grid;gap:16px}
   .list{position:relative;padding-left:34px}
   .list::before{content:"";position:absolute;left:10px;top:14px;bottom:14px;width:2px;border-radius:2px;background:linear-gradient(180deg,var(--g1),var(--g2),var(--g3))}
-  .list>.item::after{content:"";position:absolute;left:-30px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--g2);box-shadow:0 0 0 4px color-mix(in srgb,var(--g2) 22%,transparent)}
-  .item{padding:24px 26px;display:grid;grid-template-columns:auto 1fr auto;gap:4px 18px;align-items:start}
-  .item .ic{grid-row:span 3}
+  .list>.item::after{content:"";position:absolute;left:-30px;top:28px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--g2);box-shadow:0 0 0 4px color-mix(in srgb,var(--g2) 22%,transparent)}
+  .item{padding:22px 26px;display:grid;grid-template-columns:1fr auto;gap:2px 20px;align-items:start}
   .item h3{font-size:18.5px}
   .org{font-weight:600;font-size:15px;color:#9333ea}
   :root:not([data-theme="light"]) .org{color:#f0abfc}
-  .date{font-size:13px;font-weight:600;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);padding:5px 12px;border-radius:999px;white-space:nowrap;grid-column:3;grid-row:1}
-  .item p,.item ul{grid-column:2/-1;color:var(--muted);font-size:15px;margin-top:6px}
+  .date{font-size:13px;font-weight:600;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);padding:5px 12px;border-radius:999px;white-space:nowrap;grid-column:2;grid-row:1}
+  .item p,.item ul{grid-column:1/-1;color:var(--muted);font-size:15px;margin-top:8px;max-width:72ch}
   .item ul{padding-left:18px}
   .item li+li{margin-top:4px}
-  .note{grid-column:2/-1;font-size:13.5px;color:var(--dim);font-style:italic}
+  .note{grid-column:1/-1;font-size:13.5px;color:var(--dim);font-style:italic}
   .live{display:inline-block;font:700 11px Inter,sans-serif;color:#22c55e;background:rgba(34,197,94,.12);padding:3px 9px;border-radius:999px;margin-left:10px;vertical-align:3px}
 
   /* Projects */
@@ -171,7 +175,9 @@
   .proj.hide{display:none}
   .proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
   .cat{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
-  .proj h3{font-size:19px;margin-bottom:8px}
+  .proj h3{font-size:19px;margin-bottom:8px;min-height:2.4em}
+  .proj.featured h3{min-height:0}
+  .proj:hover{border-color:color-mix(in srgb,var(--g1) 45%,var(--line))}
   .proj p{color:var(--muted);font-size:15px;margin-bottom:16px;flex-grow:1}
   .metric{display:inline-block;font:700 13px "Space Grotesk",sans-serif;color:#fff;background:var(--grad);padding:4px 11px;border-radius:8px;margin-bottom:12px;align-self:flex-start}
   .tags{display:flex;flex-wrap:wrap;gap:6px}
@@ -198,13 +204,17 @@
   .achv q{color:var(--text);font-weight:600;quotes:"“" "”"}
 
   /* Education + Certificates */
-  .edu{padding:28px;display:flex;gap:18px;align-items:flex-start;margin-bottom:36px}
+  .edu{padding:28px;display:flex;gap:18px;align-items:flex-start}
   .edu h3{font-size:21px;margin-bottom:4px}
-  .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .cert{padding:22px;display:flex;gap:14px;align-items:flex-start}
-  .cert .ic{width:40px;height:40px;border-radius:11px}
-  .cert h3{font-size:16px;margin-bottom:4px;line-height:1.35}
-  .cert span{font-size:13.5px;color:var(--muted)}
+  .edu-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:20px;align-items:start}
+  .certs{padding:10px 26px}
+  .certs h3.ttl{font-size:17px;padding:16px 0 6px}
+  .cert-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:28px}
+  .cert-list li{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line)}
+  .cert-list .ck{width:22px;height:22px;border-radius:7px;background:var(--grad);display:grid;place-items:center;flex-shrink:0;margin-top:2px}
+  .cert-list .ck svg{width:13px;height:13px;color:#fff}
+  .cert-list b{display:block;font-weight:600;font-size:15px;line-height:1.35}
+  .cert-list small{font-size:13.5px;color:var(--muted)}
 
   /* Contact */
   .contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:start}
@@ -228,6 +238,9 @@
   .status.err{color:#f43f5e}
 
   footer{padding:32px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+  .foot-links{display:flex;gap:18px}
+  .to-top{position:fixed;right:22px;bottom:22px;z-index:40;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#fff;box-shadow:0 10px 24px -10px rgba(236,72,153,.8);opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .25s,transform .25s}
+  .to-top.show{opacity:1;transform:none;pointer-events:auto}
   .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
   .foot a:hover{color:var(--text)}
 
@@ -242,7 +255,8 @@
 
   /* Responsive */
   @media (max-width:1040px){
-    .projects,.achv,.certs{grid-template-columns:1fr 1fr}
+    .projects,.achv{grid-template-columns:1fr 1fr}
+    .edu-grid{grid-template-columns:1fr}
   }
   @media (max-width:960px){
     .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
@@ -259,14 +273,16 @@
   @media (max-width:640px){
     .container{padding:0 16px}
     section{padding:72px 0}
-    .projects,.achv,.certs,.focus,.row,.skills{grid-template-columns:1fr}
+    .projects,.achv,.focus,.row,.skills,.cert-list{grid-template-columns:1fr}
+    .nav-cv span{display:none}
+    .nav-cv{padding:9px 11px}
+    .proj h3{min-height:0}
     .proj.featured{grid-column:auto}
-    .item{grid-template-columns:auto 1fr;padding:20px}
+    .item{grid-template-columns:1fr;padding:20px}
     .list{padding-left:26px}
     .list::before{left:6px}
     .list>.item::after{left:-26px;width:12px;height:12px}
-    .item .ic{grid-row:span 1}
-    .date{grid-column:1/-1;grid-row:auto;justify-self:start;margin-top:8px}
+    .date{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}
     .item p,.item ul,.note{grid-column:1/-1}
     .code{font-size:12.5px;padding:16px}
     .hero-stats{gap:8px}
@@ -282,6 +298,7 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#about">Skip to content</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -306,6 +323,8 @@
     <symbol id="i-trophy" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2z"/></symbol>
     <symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4"/></g></symbol>
     <symbol id="i-bulb" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></symbol>
     <symbol id="i-award" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></g></symbol>
   </defs>
 </svg>
@@ -318,8 +337,6 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#certificates">Certificates</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-actions">
@@ -327,6 +344,7 @@
         <svg class="icon moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="icon sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></g></svg>
       </button>
+      <a href="Mays_Owais_CV.pdf" class="nav-cv" download aria-label="Download CV"><svg class="icon"><use href="#i-download"/></svg><span>CV</span></a>
       <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <svg class="icon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -341,7 +359,7 @@
   <div class="container hero-grid">
     <div>
       <span class="badge reveal"><span class="dot"></span>Open to software, data, AI &amp; training roles</span>
-      <h1 class="reveal">Hi, I'm <span class="grad-text">Mays Owais</span></h1>
+      <h1 class="reveal"><span class="hi">Hi, I'm</span><span class="grad-text name">Mays Owais</span></h1>
       <div class="role reveal" aria-live="polite">I'm a <b id="typed">Python Developer</b><span class="cursor" aria-hidden="true"></span></div>
       <p class="lead reveal">Computer Science graduate from Jerash University (2026). I build full-stack, data and AI automation projects — and I teach Python, web development and AI.</p>
       <div class="hero-cta reveal">
@@ -405,19 +423,16 @@
     </div>
     <div class="list">
       <article class="item card reveal">
-        <div class="ic ic-v"><svg class="icon"><use href="#i-code"/></svg></div>
         <div><h3>Python &amp; Programming Languages Trainer<span class="live">CURRENT</span></h3><div class="org">Engineer Spark</div></div>
         <span class="date">Sep 2026 – Present</span>
         <p>Deliver hands-on training in Python and other programming languages, designing content and practical exercises that build learners' coding skills.</p>
       </article>
       <article class="item card reveal">
-        <div class="ic ic-p"><svg class="icon"><use href="#i-bot"/></svg></div>
         <div><h3>AI &amp; Digital Marketing Trainer<span class="live">CURRENT</span></h3><div class="org">Arab Professional Trainer Union</div></div>
         <span class="date">Sep 2026 – Present</span>
         <p>Deliver AI and digital marketing courses and workshops, preparing content tailored to different learner levels.</p>
       </article>
       <article class="item card reveal">
-        <div class="ic ic-a"><svg class="icon"><use href="#i-web"/></svg></div>
         <div><h3>Python &amp; Web Development Trainer</h3><div class="org">Bahr Al-Bayanat Center</div></div>
         <span class="date">Jul 2025 – Sep 2026</span>
         <p>Delivered hands-on Python and web development training, designing the curriculum and practical exercises.</p>
@@ -436,7 +451,6 @@
     </div>
     <div class="list">
       <article class="item card reveal">
-        <div class="ic ic-c"><svg class="icon"><use href="#i-net"/></svg></div>
         <div><h3>System Administration Training</h3><div class="org">ITON IT Solutions</div></div>
         <span class="date">Oct 4 – Nov 16, 2026</span>
         <span class="note">Youth, Technology and Jobs (YTJ) Project, in partnership with the Ministry of Digital Economy and Entrepreneurship</span>
@@ -446,13 +460,11 @@
         </ul>
       </article>
       <article class="item card reveal">
-        <div class="ic ic-p"><svg class="icon"><use href="#i-shield"/></svg></div>
         <div><h3>Data Security Trainee (Penetration Testing)</h3><div class="org">Green Circle</div></div>
         <span class="date">Jun 2025 – Sep 2025</span>
         <p>Reviewed security logs and analyzed network traffic patterns to identify vulnerabilities and strengthen data security protocols.</p>
       </article>
       <article class="item card reveal">
-        <div class="ic ic-g"><svg class="icon"><use href="#i-map"/></svg></div>
         <div><h3>GIS Trainee</h3><div class="org">GISTEC</div></div>
         <span class="date">Jun 2025 – Aug 2025</span>
         <p>Analyzed spatial datasets to produce accurate mapping reports and maintained geospatial databases, ensuring data integrity.</p>
@@ -594,17 +606,22 @@
       <span class="eyebrow grad-text">Education &amp; certificates</span>
       <h2>Education &amp; certifications</h2>
     </div>
-    <div class="edu card reveal">
-      <div class="ic ic-v"><svg class="icon"><use href="#i-teach"/></svg></div>
-      <div><h3>Bachelor of Science in Computer Science</h3><div class="org">Jerash University, Jordan · Feb 2026</div></div>
-    </div>
-    <div class="certs">
-      <div class="cert card reveal"><div class="ic ic-c"><svg class="icon"><use href="#i-award"/></svg></div><div><h3>SQL for Data Science</h3><span>Lengo Academy · 2025</span></div></div>
-      <div class="cert card reveal"><div class="ic ic-p"><svg class="icon"><use href="#i-award"/></svg></div><div><h3>Data Analysis</h3><span>HP LIFE · 2025</span></div></div>
-      <div class="cert card reveal"><div class="ic ic-a"><svg class="icon"><use href="#i-award"/></svg></div><div><h3>Data Analytics and Business Analysis</h3><span>LinkedIn Learning · 2025</span></div></div>
-      <div class="cert card reveal"><div class="ic ic-v"><svg class="icon"><use href="#i-award"/></svg></div><div><h3>AI Fundamentals</h3><span>Udacity · 2025</span></div></div>
-      <div class="cert card reveal"><div class="ic ic-g"><svg class="icon"><use href="#i-award"/></svg></div><div><h3>Elements of AI</h3><span>University of Helsinki · 2025</span></div></div>
-      <div class="cert card reveal"><div class="ic ic-c"><svg class="icon"><use href="#i-award"/></svg></div><div><h3>Gemini Certified Educator</h3><span>Google for Education</span></div></div>
+    <div class="edu-grid">
+      <div class="edu card reveal">
+        <div class="ic ic-v"><svg class="icon"><use href="#i-teach"/></svg></div>
+        <div><h3>B.Sc. in Computer Science</h3><div class="org">Jerash University, Jordan</div><p style="color:var(--muted);font-size:14.5px;margin-top:6px">Graduated Feb 2026</p></div>
+      </div>
+      <div class="certs card reveal">
+        <h3 class="ttl">Certifications</h3>
+        <ul class="cert-list">
+          <li><span class="ck"><svg><use href="#i-check"/></svg></span><span><b>SQL for Data Science</b><small>Lengo Academy · 2025</small></span></li>
+          <li><span class="ck"><svg><use href="#i-check"/></svg></span><span><b>Data Analysis</b><small>HP LIFE · 2025</small></span></li>
+          <li><span class="ck"><svg><use href="#i-check"/></svg></span><span><b>Data Analytics and Business Analysis</b><small>LinkedIn Learning · 2025</small></span></li>
+          <li><span class="ck"><svg><use href="#i-check"/></svg></span><span><b>AI Fundamentals</b><small>Udacity · 2025</small></span></li>
+          <li><span class="ck"><svg><use href="#i-check"/></svg></span><span><b>Elements of AI</b><small>University of Helsinki · 2025</small></span></li>
+          <li><span class="ck"><svg><use href="#i-check"/></svg></span><span><b>Gemini Certified Educator</b><small>Google for Education</small></span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -645,9 +662,14 @@
 <footer>
   <div class="container foot">
     <span>&copy; <span id="year">2026</span> Mays Waleed Owais. All rights reserved.</span>
-    <a href="#home">Back to top ↑</a>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/mays-owais-718bb725a" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/maysowais" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:mays67663@gmail.com">Email</a>
+    </div>
   </div>
 </footer>
+<a href="#home" class="to-top" id="toTop" aria-label="Back to top"><svg class="icon"><use href="#i-up"/></svg></a>
 
 <script>
 (function(){
@@ -667,17 +689,25 @@
     var open = links.classList.toggle('open');
     menuBtn.setAttribute('aria-expanded', open);
   });
-  links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false); }); });
+  function closeMenu(){ links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false); }
+  links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+  document.addEventListener('click', function(e){ if (links.classList.contains('open') && !links.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
 
   // Header + active link
-  var header = document.getElementById('header');
+  var header = document.getElementById('header'), toTop = document.getElementById('toTop');
   var navAs = links.querySelectorAll('a');
-  var sections = Array.prototype.map.call(navAs, function(a){ return document.querySelector(a.getAttribute('href')); });
+  // every section maps to a menu item (or none), so the highlight is always right
+  var allSections = document.querySelectorAll('main section[id]');
+  var alias = {training:'experience'};
   function onScroll(){
     header.classList.toggle('scrolled', window.scrollY > 10);
-    var pos = window.scrollY + 140, current = -1;
-    sections.forEach(function(s, i){ if (s && s.offsetTop <= pos) current = i; });
-    navAs.forEach(function(a, i){ a.classList.toggle('active', i === current); });
+    var pos = window.scrollY + 140, currentId = '';
+    allSections.forEach(function(s){ if (s.offsetTop <= pos) currentId = s.id; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) currentId = 'contact';
+    currentId = alias[currentId] || currentId;
+    navAs.forEach(function(a){ var on = a.getAttribute('href') === '#' + currentId; a.classList.toggle('active', on); if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    toTop.classList.toggle('show', window.scrollY > 700);
   }
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
