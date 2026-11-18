@@ -144,6 +144,7 @@
   .about-text p{color:var(--muted);margin-bottom:16px;font-size:16.5px}
   .about-text strong{color:var(--text);font-weight:600}
   .focus{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .focus{grid-auto-rows:1fr}
   .focus .card{padding:22px}
   .focus .ic{margin-bottom:14px}
   .focus h3{font-size:16.5px;margin-bottom:4px}
@@ -170,13 +171,12 @@
   .filter{font:500 14px Inter,sans-serif;padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;transition:all .2s}
   .filter:hover{color:var(--text);border-color:var(--line-2)}
   .filter.active{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 8px 20px -10px rgba(236,72,153,.8)}
-  .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .projects{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;gap:20px}
   .proj{padding:24px;display:flex;flex-direction:column}
   .proj.hide{display:none}
   .proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
   .cat{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
-  .proj h3{font-size:19px;margin-bottom:8px;min-height:2.4em}
-  .proj.featured h3{min-height:0}
+  .proj h3{font-size:19px;margin-bottom:8px}
   .proj:hover{border-color:color-mix(in srgb,var(--g1) 45%,var(--line))}
   .proj p{color:var(--muted);font-size:15px;margin-bottom:16px;flex-grow:1}
   .metric{display:inline-block;font:700 13px "Space Grotesk",sans-serif;color:#fff;background:var(--grad);padding:4px 11px;border-radius:8px;margin-bottom:12px;align-self:flex-start}
@@ -184,18 +184,20 @@
   .tag{font-size:12.5px;font-weight:500;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
   .proj-link{margin-top:16px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
   .proj-link:hover{color:var(--g2)}
-  .proj.featured{grid-column:span 2}
+  .proj.more{border-style:dashed;align-items:center;justify-content:center;text-align:center;gap:10px;color:var(--muted);transition:border-color .2s,color .2s}
+  .proj.more:hover{border-color:var(--g2);color:var(--text)}
+  .proj.more .ic{margin:0 auto 4px}
 
   /* Skills */
-  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .skill{padding:22px;display:flex;flex-direction:column;gap:14px}
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;gap:20px}
+  .skill{padding:24px;display:flex;flex-direction:row;gap:16px;align-items:flex-start}
   .skill h3{font-size:16px;margin-bottom:10px}
   .chips{display:flex;flex-wrap:wrap;gap:6px}
   .chip{font-size:13px;padding:5px 11px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);transition:border-color .2s,color .2s}
   .chip:hover{border-color:var(--g2);color:var(--g2)}
 
   /* Achievements */
-  .achv{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .achv{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:20px}
   .achv .card{padding:26px}
   .achv .ic{margin-bottom:16px}
   .achv .kind{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
@@ -206,10 +208,10 @@
   /* Education + Certificates */
   .edu{padding:28px;display:flex;gap:18px;align-items:flex-start}
   .edu h3{font-size:21px;margin-bottom:4px}
-  .edu-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:20px;align-items:start}
+  .edu-grid{display:grid;grid-template-columns:1fr;gap:20px}
   .certs{padding:10px 26px}
   .certs h3.ttl{font-size:17px;padding:16px 0 6px}
-  .cert-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:28px}
+  .cert-list{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);column-gap:28px}
   .cert-list li{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line)}
   .cert-list .ck{width:22px;height:22px;border-radius:7px;background:var(--grad);display:grid;place-items:center;flex-shrink:0;margin-top:2px}
   .cert-list .ck svg{width:13px;height:13px;color:#fff}
@@ -255,13 +257,12 @@
 
   /* Responsive */
   @media (max-width:1040px){
-    .projects,.achv{grid-template-columns:1fr 1fr}
-    .edu-grid{grid-template-columns:1fr}
+    .cert-list{grid-template-columns:1fr 1fr}
   }
   @media (max-width:960px){
     .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
     .hero{padding:130px 0 70px}
-    .skills{grid-template-columns:1fr 1fr}
+    .achv{grid-template-columns:1fr;grid-auto-rows:auto}
   }
   @media (max-width:900px){
     .menu-btn{display:grid}
@@ -273,7 +274,8 @@
   @media (max-width:640px){
     .container{padding:0 16px}
     section{padding:72px 0}
-    .projects,.achv,.focus,.row,.skills,.cert-list{grid-template-columns:1fr}
+    .projects,.achv,.focus,.row,.skills,.cert-list{grid-template-columns:1fr;grid-auto-rows:auto}
+    .skill{flex-direction:column}
     .nav-cv span{display:none}
     .nav-cv{padding:9px 11px}
     .proj h3{min-height:0}
@@ -488,9 +490,9 @@
       <button class="filter" data-filter="ai">AI &amp; ML</button>
     </div>
     <div class="projects" id="projectGrid">
-      <article class="proj card featured reveal" data-cat="web">
+      <article class="proj card reveal" data-cat="web">
         
-        <div class="proj-top"><div class="ic ic-v"><svg class="icon"><use href="#i-db"/></svg></div><span class="cat">Full-Stack · Featured</span></div>
+        <div class="proj-top"><div class="ic ic-v"><svg class="icon"><use href="#i-db"/></svg></div><span class="cat">Full-Stack</span></div>
         <h3>Student Management System</h3>
         <p>A full-stack web application for managing student records, with a React front end, a Node.js back end and a PostgreSQL database. Server-side logic adds, views, updates and deletes student records through a browser-based React interface.</p>
         <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">CRUD</span></div>
@@ -547,6 +549,11 @@
         <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
       
       </article>
+      <a class="proj card more reveal" data-cat="all" href="https://github.com/maysowais" target="_blank" rel="noopener">
+        <div class="ic ic-v"><svg class="icon"><use href="#i-github"/></svg></div>
+        <h3 style="color:var(--text)">More on GitHub</h3>
+        <span style="font-size:14px">Code, READMEs and analysis notebooks</span>
+      </a>
     </div>
   </div>
 </section>
@@ -609,7 +616,8 @@
     <div class="edu-grid">
       <div class="edu card reveal">
         <div class="ic ic-v"><svg class="icon"><use href="#i-teach"/></svg></div>
-        <div><h3>B.Sc. in Computer Science</h3><div class="org">Jerash University, Jordan</div><p style="color:var(--muted);font-size:14.5px;margin-top:6px">Graduated Feb 2026</p></div>
+        <div><h3>B.Sc. in Computer Science</h3><div class="org">Jerash University, Jordan</div></div>
+        <span class="date" style="margin-left:auto;align-self:center">Feb 2026</span>
       </div>
       <div class="certs card reveal">
         <h3 class="ttl">Certifications</h3>
@@ -733,7 +741,7 @@
       document.querySelectorAll('.filter').forEach(function(b){ b.classList.remove('active'); });
       btn.classList.add('active');
       var f = btn.getAttribute('data-filter');
-      cards.forEach(function(card){ card.classList.toggle('hide', f !== 'all' && card.getAttribute('data-cat') !== f); });
+      cards.forEach(function(card){ var c = card.getAttribute('data-cat'); card.classList.toggle('hide', f !== 'all' && c !== 'all' && c !== f); });
     });
   });
 
